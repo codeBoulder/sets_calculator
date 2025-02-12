@@ -1,17 +1,20 @@
 import math
 
-# Введення елементів множини
+# Input the set elments
 def data_input():
     while True:
         print('Введіть елементи множини у вигляді (1, 2, 3, ...):')
         input1 = input()
         try:
             set1 = set(input1.split(", "))
+            for x in set1:
+                if not x.isdigit():
+                    raise ValueError
             return set1
         except ValueError:
-            print("Помилка! Введіть числа, розділені комами.")
+            print("Помилка! Введіть коректну множину чисел.")
 
-# Виконання бінарних операцій між двома множинами
+# Binary operations proccessing
 def binary_operations(set1, set2):
     set1, set2 = list(set1), list(set2)
     set1.reverse()
@@ -35,7 +38,7 @@ def binary_operations(set1, set2):
         result.append(matrix)
     return result
 
-# Основна частина програми
+# The main part of program
 def main():
     set1 = data_input()
     set2 = data_input()
@@ -60,10 +63,9 @@ def main():
             for row in binary_operations(set1, set2):
                 print(row)
             
-
         if input("Бажаєте продовжити? (Y/N): ") == "N":
             break
 
-# Запуск програми
+# Program start
 if __name__ == "__main__":
     main()
