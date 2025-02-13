@@ -43,8 +43,8 @@ def main():
     set1 = data_input()
     set2 = data_input()
     while True:
-        print('Оберіть потрібну дію із множинами\n1 - Перетин\n2 - Об\'єднання\n3 - Симетрична різниця\n4 - Різниця\n5 - Бінарні відношення')
-        choice = int(input())
+        print('Оберіть потрібну дію із множинами:\n1 - Перетин\n2 - Об\'єднання\n3 - Симетрична різниця\n4 - Різниця\n5 - Бінарні відношення')
+        choice = int(input("Введіть номер дії - "))
 
         if choice == 1:
             print(f'Результат перетину множин - {sorted(set1 & set2)}')
@@ -53,16 +53,16 @@ def main():
             print(f'Результат об\'єднання множин - {sorted(set1 | set2)}')
             print(f'Потужність - {len(set1 | set2)}')
         elif choice == 3:
-            print(f'Результат симетричної різниці - {set1 ^ set2}')
+            print(f'Результат симетричної різниці ({set1} ^ {set2}) - {set1 ^ set2}')
             print(f'Потужність - {len(set1 ^ set2)}')
         elif choice == 4:
-            print(f'Результат різниці - {sorted(set1 - set2)}')
+            print(f'Результат різниці ({set1} - {set2}) - {sorted(set1 - set2)}')
             print(f'Потужність - {len(set1 - set2)}')
         elif choice == 5:
             print(f"Результат -")
             for row in binary_operations(set1, set2):
                 print(row)
-            
+                
         if input("Бажаєте продовжити? (Y/N): ") == "N":
             break
 
