@@ -17,10 +17,10 @@ def data_input():
 # Binary operations proccessing
 def binary_operations(set1, set2):
     set1, set2 = list(set1), list(set2)
-    set1.reverse()
-    set2.reverse()
-    print("Pick the binary operation you need:\n1 -- a > b\n2 -- sin(a) > sin(b)\n3 -- a ** 2 = b\n4 -- a + 1 < b")
-    choice_bin = int(input())
+    set1.reverse(), set2.reverse()
+    check = 0
+    print("\nRead the instructions in README.md")
+    user_condition = input("Input a condition using 'a' and 'b': ")
     result = []
     print("Result - ")
     for a in set1:
@@ -28,14 +28,13 @@ def binary_operations(set1, set2):
         matrix = []
         for b in set2:
             b = int(b)
-            if choice_bin == 1:
-                matrix.append(1 if a > b else 0)
-            elif choice_bin == 2:
-                matrix.append(1 if math.sin(a) > math.sin(b) else 0)
-            elif choice_bin == 3:
-                matrix.append(1 if a ** 2 == b else 0)
-            elif choice_bin == 4:
-                matrix.append(1 if a + 1 < b else 0)
+            try:
+                matrix.append(1 if eval(user_condition) else 0)
+            except Exception as e:
+                print(f"Error in condition:{e}")
+                check = 1
+                break
+        if check == 1: break
         result.append(matrix)
     return result
 
@@ -44,7 +43,7 @@ def main():
     set1 = data_input()
     set2 = data_input()
     while True:
-        print('Pick the set operation you need:\n1 - Intersection\n2 - Union\n3 - Symmetric Difference\n4 - Difference\n5 - Binary Relations')
+        print('\nPick the set operation you need:\n1 - Intersection\n2 - Union\n3 - Symmetric Difference\n4 - Difference\n5 - Binary Relations')
         choice = int(input("Input operation number - "))
 
         if choice == 1:
